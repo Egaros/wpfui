@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using Wpf.Ui.Contracts;
+using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls.Navigation;
 using Wpf.Ui.Gallery.Services.Contracts;
 using Wpf.Ui.Gallery.ViewModels.Windows;
@@ -19,7 +19,7 @@ public partial class MainWindow : IWindow
         IServiceProvider serviceProvider, ISnackbarService snackbarService,
         IDialogService dialogService)
     {
-        Appearance.Watcher.Watch(this);
+        Watcher.Watch(this);
 
         ViewModel = viewModel;
         DataContext = this;

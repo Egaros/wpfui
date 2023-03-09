@@ -174,6 +174,13 @@ public partial class NavigationView
         typeof(TransitionType), typeof(NavigationView),
         new FrameworkPropertyMetadata(TransitionType.FadeInWithSlide));
 
+    /// <summary>
+    /// Property for <see cref="LeftTemplate"/>.
+    /// </summary>
+    public static readonly DependencyProperty LeftTemplateProperty = DependencyProperty.Register(nameof(LeftTemplate),
+        typeof(ControlTemplate), typeof(NavigationView),
+        new FrameworkPropertyMetadata(((ControlTemplate)null!)));
+
     /// <inheritdoc/>
     public object Header
     {
@@ -341,6 +348,12 @@ public partial class NavigationView
     {
         get => (TransitionType)GetValue(TransitionTypeProperty);
         set => SetValue(TransitionTypeProperty, value);
+    }
+
+    public ControlTemplate LeftTemplate
+    {
+        get => (ControlTemplate)GetValue(LeftTemplateProperty);
+        set => SetValue(LeftTemplateProperty, value);
     }
 
     private static void OnMenuItemsPropertyChanged(DependencyObject? d, DependencyPropertyChangedEventArgs e)

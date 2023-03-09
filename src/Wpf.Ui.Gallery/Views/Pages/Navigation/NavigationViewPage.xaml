@@ -128,7 +128,8 @@
                             MinHeight="300"
                             Margin="0"
                             IsBackButtonVisible="Collapsed"
-                            IsPaneToggleVisible="False"
+                            IsPaneToggleVisible="True"
+                            LeftTemplate="{StaticResource LeftNavigationViewTemplate}"
                             PaneDisplayMode="LeftFluent">
                             <ui:NavigationView.MenuItems>
                                 <ui:NavigationViewItem Content="Dashboard" TargetPageType="{x:Type samples:SamplePage1}">
@@ -162,7 +163,7 @@
                                         Text="NavigationView Header" />
                                 </Border>
                             </ui:NavigationView.Header>
-                            <ui:NavigationView.PaneHeader>
+                            <!--<ui:NavigationView.PaneHeader>
                                 <Border
                                     Width="60"
                                     Height="60"
@@ -195,7 +196,7 @@
                                         TextAlignment="Center"
                                         TextWrapping="WrapWithOverflow" />
                                 </Border>
-                            </ui:NavigationView.PaneFooter>
+                            </ui:NavigationView.PaneFooter>-->
                         </ui:NavigationView>
                         <controls:GalleryControlPresenter.CodeText>
                             &lt;ui:NavigationView PaneDisplayMode=&quot;LeftFluent&quot; &gt;\n

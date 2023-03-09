@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Wpf.Ui.Controls.Navigation;
 
@@ -25,6 +26,7 @@ namespace Wpf.Ui.Controls.Navigation;
 public partial class NavigationView : System.Windows.Controls.Control, INavigationView
 {
     private ObservableCollection<string>? _autoSuggestBoxItems;
+    private ControlTemplate _leftCompactTemplate;
 
     /// <inheritdoc/>
     public INavigationViewItem? SelectedItem { get; private set; }
@@ -57,6 +59,7 @@ public partial class NavigationView : System.Windows.Controls.Control, INavigati
     protected override void OnInitialized(EventArgs e)
     {
         base.OnInitialized(e);
+        _leftCompactTemplate = Template;
 
         if (ItemTemplate != null)
             UpdateMenuItemsTemplate();
@@ -124,6 +127,20 @@ public partial class NavigationView : System.Windows.Controls.Control, INavigati
 #if DEBUG
         System.Diagnostics.Debug.WriteLine("Toggle");
 #endif
+        switch (PaneDisplayMode)
+        {
+            case NavigationViewPaneDisplayMode.LeftFluent:
+                //Template = 
+                PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
+                Template = LeftTemplate;
+                break;
+
+            case NavigationViewPaneDisplayMode.Left:
+                //Template = 
+                PaneDisplayMode = NavigationViewPaneDisplayMode.LeftFluent;
+                Template = _leftCompactTemplate;
+                break;
+        }
     }
 
     /// <summary>
@@ -159,7 +176,7 @@ public partial class NavigationView : System.Windows.Controls.Control, INavigati
         {
             case NavigationViewPaneDisplayMode.LeftFluent:
                 IsBackButtonVisible = NavigationViewBackButtonVisible.Collapsed;
-                IsPaneToggleVisible = false;
+                // IsPaneToggleVisible = false;
                 break;
         }
     }
