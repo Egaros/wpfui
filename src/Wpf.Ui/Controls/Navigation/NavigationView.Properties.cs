@@ -181,6 +181,13 @@ public partial class NavigationView
         typeof(ControlTemplate), typeof(NavigationView),
         new FrameworkPropertyMetadata(((ControlTemplate)null!)));
 
+    /// <summary>
+    /// Property for <see cref="LeftTemplate"/>.
+    /// </summary>
+    public static readonly DependencyProperty LeftItemTemplateProperty = DependencyProperty.Register(nameof(LeftItemTemplate),
+        typeof(ControlTemplate), typeof(NavigationView),
+        new FrameworkPropertyMetadata(((ControlTemplate)null!)));
+
     /// <inheritdoc/>
     public object Header
     {
@@ -354,6 +361,12 @@ public partial class NavigationView
     {
         get => (ControlTemplate)GetValue(LeftTemplateProperty);
         set => SetValue(LeftTemplateProperty, value);
+    }
+
+    public ControlTemplate LeftItemTemplate
+    {
+        get => (ControlTemplate)GetValue(LeftItemTemplateProperty);
+        set => SetValue(LeftItemTemplateProperty, value);
     }
 
     private static void OnMenuItemsPropertyChanged(DependencyObject? d, DependencyPropertyChangedEventArgs e)

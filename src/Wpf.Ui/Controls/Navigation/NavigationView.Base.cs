@@ -27,6 +27,7 @@ public partial class NavigationView : System.Windows.Controls.Control, INavigati
 {
     private ObservableCollection<string>? _autoSuggestBoxItems;
     private ControlTemplate _leftCompactTemplate;
+    private ControlTemplate _leftItemCompactTemplate;
 
     /// <inheritdoc/>
     public INavigationViewItem? SelectedItem { get; private set; }
@@ -60,6 +61,8 @@ public partial class NavigationView : System.Windows.Controls.Control, INavigati
     {
         base.OnInitialized(e);
         _leftCompactTemplate = Template;
+        _leftItemCompactTemplate = ItemTemplate;
+
 
         if (ItemTemplate != null)
             UpdateMenuItemsTemplate();
@@ -130,15 +133,15 @@ public partial class NavigationView : System.Windows.Controls.Control, INavigati
         switch (PaneDisplayMode)
         {
             case NavigationViewPaneDisplayMode.LeftFluent:
-                //Template = 
                 PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
                 Template = LeftTemplate;
+                ItemTemplate = LeftItemTemplate;
                 break;
 
             case NavigationViewPaneDisplayMode.Left:
-                //Template = 
                 PaneDisplayMode = NavigationViewPaneDisplayMode.LeftFluent;
                 Template = _leftCompactTemplate;
+                ItemTemplate = _leftItemCompactTemplate;
                 break;
         }
     }
