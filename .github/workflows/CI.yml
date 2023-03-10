@@ -21,7 +21,7 @@ jobs:
         run: msbuild src\Wpf.Ui.sln -p:Configuration=Release -p:Platform="Any CPU" -p:GITHUB_ACTIONS=True -m -graph -isolate
 
       - name: Pack
-        run: dotnet pack --configuration Release --output artifacts
+        run: dotnet pack src\Wpf.Ui.sln --configuration Release --output artifacts
         
       - name: Push
         run: dotnet nuget push "*" -s ${{ github.event.inputs.packageSource }} -k ${{secrets.API_BAGET}}
