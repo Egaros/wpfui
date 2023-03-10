@@ -23,9 +23,6 @@ jobs:
       - name: Pack
         run: dotnet pack src\Wpf.Ui.sln --configuration Release --output artifacts
         
-      - name: Push
-        run: dotnet nuget push "*" -s ${{ github.event.inputs.packageSource }} -k ${{secrets.API_BAGET}}
+      - name: Push to nuget
+        run: dotnet nuget push "*" -s ${{ vars.NUGET_URL }} -k ${{secrets.API_BAGET}}
         working-directory: artifacts
-
-      - name: Publish the package to NuGet.org
-        run: dotnet nuget push "*" -s ${{ vars.NUGET_URL }} -k ${{ secrets.API_BAGET }}
