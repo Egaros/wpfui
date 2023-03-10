@@ -28,4 +28,4 @@ jobs:
         working-directory: artifacts
 
       - name: Publish the package to NuGet.org
-        run: dotnet nuget push "*" -s ${{ vars.NUGET_URL }} -k ${{ secrets.API_BAGET }
+        run: dotnet nuget push "*" -s ${{ vars.NUGET_URL }} -k ${{ secrets.API_BAGET }}
