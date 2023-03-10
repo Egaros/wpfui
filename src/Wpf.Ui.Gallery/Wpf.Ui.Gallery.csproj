@@ -10,6 +10,9 @@
     <ApplicationIcon>wpfui.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <RootNamespace>Wpf.Ui.Gallery</RootNamespace>
+    <Version>3.0.0-preview.2</Version>
+    <PackageProjectUrl>https://github.com/Egaros/wpfui</PackageProjectUrl>
+    <Authors>lepo.co, Egaros</Authors>
   </PropertyGroup>
 
   <ItemGroup>
