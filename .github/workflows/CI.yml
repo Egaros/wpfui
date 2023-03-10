@@ -14,9 +14,8 @@ jobs:
       - uses: microsoft/setup-msbuild@v1.3
         with:
           msbuild-architecture: x64
-      - uses: nuget/setup-nuget@v1
-        with:
-          nuget-api-key: ${{ secrets.NUGET_API_KEY }}
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v3.0.3
 
       - name: Restore dependencies
         run: nuget restore src\Wpf.Ui.sln
@@ -24,8 +23,12 @@ jobs:
       - name: Build the solution
         run: msbuild src\Wpf.Ui.sln -p:Configuration=Release -p:Platform="Any CPU" -p:GITHUB_ACTIONS=True -m -graph -isolate
 
-      - name: Publish the package to NuGet.org
-        run: dotnet nuget push -s 'https://nuget.elinuwan.ovh/v3/index.json' -k ${{ secrets.API_BAGET }} src\Wpf.Ui\bin\Release\*.nupkg
+      - name: Pack
+        run: dotnet pack --configuration Release --output artifacts
+        
+      - name: Push
+        run: dotnet nuget push "*" -s ${{ github.event.inputs.packageSource }} -k ${{secrets.API_BAGET}}
+        working-directory: artifacts
 
-      - name: Publish the symbols to NuGet.org
-        run: dotnet nuget push -s 'https://nuget.elinuwan.ovh/v3/index.json' -k ${{ secrets.API_BAGET }} src\Wpf.Ui\bin\Release\*.snupkg
+      - name: Publish the package to NuGet.org
+        run: dotnet nuget push "*" -s ${{ vars.NUGET_URL }} -k ${{ secrets.API_BAGET }
