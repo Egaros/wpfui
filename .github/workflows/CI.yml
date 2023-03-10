@@ -24,5 +24,5 @@ jobs:
         run: dotnet pack src\Wpf.Ui.sln --configuration Release --output artifacts
         
       - name: Push to nuget
-        run: dotnet nuget push "*" -s ${{ vars.NUGET_URL }} -k ${{secrets.API_BAGET}}
+        run: dotnet nuget push "*" -s ${{ secrets.NUGET_URL }} -k ${{secrets.API_BAGET}}
         working-directory: artifacts
