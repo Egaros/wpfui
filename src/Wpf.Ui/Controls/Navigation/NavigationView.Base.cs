@@ -60,9 +60,6 @@ public partial class NavigationView : System.Windows.Controls.Control, INavigati
     protected override void OnInitialized(EventArgs e)
     {
         base.OnInitialized(e);
-        _leftCompactTemplate = Template;
-        _leftItemCompactTemplate = ItemTemplate;
-
 
         if (ItemTemplate != null)
             UpdateMenuItemsTemplate();
@@ -130,20 +127,7 @@ public partial class NavigationView : System.Windows.Controls.Control, INavigati
 #if DEBUG
         System.Diagnostics.Debug.WriteLine("Toggle");
 #endif
-        switch (PaneDisplayMode)
-        {
-            case NavigationViewPaneDisplayMode.LeftFluent:
-                PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
-                Template = LeftTemplate;
-                ItemTemplate = LeftItemTemplate;
-                break;
-
-            case NavigationViewPaneDisplayMode.Left:
-                PaneDisplayMode = NavigationViewPaneDisplayMode.LeftFluent;
-                Template = _leftCompactTemplate;
-                ItemTemplate = _leftItemCompactTemplate;
-                break;
-        }
+        IsPaneExpanded = !IsPaneExpanded;
     }
 
     /// <summary>

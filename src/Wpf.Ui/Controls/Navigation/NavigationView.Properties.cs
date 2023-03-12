@@ -175,18 +175,11 @@ public partial class NavigationView
         new FrameworkPropertyMetadata(TransitionType.FadeInWithSlide));
 
     /// <summary>
-    /// Property for <see cref="LeftTemplate"/>.
+    /// Property for <see cref="IsPaneExpanded"/>.
     /// </summary>
-    public static readonly DependencyProperty LeftTemplateProperty = DependencyProperty.Register(nameof(LeftTemplate),
-        typeof(ControlTemplate), typeof(NavigationView),
-        new FrameworkPropertyMetadata(((ControlTemplate)null!)));
-
-    /// <summary>
-    /// Property for <see cref="LeftTemplate"/>.
-    /// </summary>
-    public static readonly DependencyProperty LeftItemTemplateProperty = DependencyProperty.Register(nameof(LeftItemTemplate),
-        typeof(ControlTemplate), typeof(NavigationView),
-        new FrameworkPropertyMetadata(((ControlTemplate)null!)));
+    public static readonly DependencyProperty IsPaneExpandedProperty = DependencyProperty.Register(nameof(IsPaneExpanded),
+        typeof(bool), typeof(NavigationView),
+        new FrameworkPropertyMetadata(false));
 
     /// <inheritdoc/>
     public object Header
@@ -357,17 +350,12 @@ public partial class NavigationView
         set => SetValue(TransitionTypeProperty, value);
     }
 
-    public ControlTemplate LeftTemplate
+    public bool IsPaneExpanded
     {
-        get => (ControlTemplate)GetValue(LeftTemplateProperty);
-        set => SetValue(LeftTemplateProperty, value);
+        get => (bool)GetValue(IsPaneExpandedProperty);
+        set => SetValue(IsPaneExpandedProperty, value);
     }
 
-    public ControlTemplate LeftItemTemplate
-    {
-        get => (ControlTemplate)GetValue(LeftItemTemplateProperty);
-        set => SetValue(LeftItemTemplateProperty, value);
-    }
 
     private static void OnMenuItemsPropertyChanged(DependencyObject? d, DependencyPropertyChangedEventArgs e)
     {
